@@ -1,0 +1,1 @@
+Basically you just run this generator, to get a basic application.html.haml layout, that has the doctype and common features such as the title yielding and other structural elements.

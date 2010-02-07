@@ -6,10 +6,11 @@ gem 'haml'
 gem 'RedCloth'
 gem 'resource_controller'
 gem 'will_paginate'
-rake "gems:install"
+rake "gems:install", :sudo => true
 
-# Install HAML
+# Install HAML and SASS
 run "haml --rails ."
+run "mkdir public/stylesheets/sass"
 
 # Get the standardista
 plugin "standardista", :git => "git://github.com/mislav/standardista.git"
@@ -40,6 +41,9 @@ run "cp config/database.yml config/example_database.yml"
 generate :controller, "pages index"
 route "map.root :controller => :pages"
 run "rm public/index.html"
+
+# Generate the standard layout.
+generate :layout
 
 # Finally add to repo and commit.
 git :add => "."
